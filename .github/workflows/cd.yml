@@ -1,0 +1,29 @@
+name: CD - Entrega Continua
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Gerar build de producao
+        run: npm run build
+
+      - name: Simular Deploy e Upload de Artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-react-app
+          path: build/
