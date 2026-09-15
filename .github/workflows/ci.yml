@@ -1,0 +1,24 @@
+name: CI - Integracao Continua
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o codigo do repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Verificar integridade do build (React)
+        run: npm run build
