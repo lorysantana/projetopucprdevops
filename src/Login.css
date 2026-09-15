@@ -1,0 +1,48 @@
+.container {
+	font-family: Arial, sans-serif;
+	margin: 20px;
+}
+
+.login-icon {
+	width: 30px;
+	margin-bottom: 10px;
+	opacity: 0.8;
+}
+
+.container h1 {
+	font-size: 24px;
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+
+.input-group {
+	margin-bottom: 5px;
+}
+
+.container input {
+	display: block;
+	width: 220px;
+	padding: 4px 6px;
+	border: 1px solid #767676;
+	font-size: 14px;
+	box-sizing: border-box;
+}
+
+.container button {
+	padding: 4px 12px;
+	margin-top: 5px;
+	border: 1px solid #767676;
+	background-color: #efefef;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+.container button:hover {
+	background-color: #e5e5e5;
+}
+
+.mensagem-label {
+	margin-top: 25px;
+	font-size: 16px;
+	color: #000;
+}
