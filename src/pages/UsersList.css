@@ -1,0 +1,61 @@
+.users-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+td button,
+td a {
+  margin-right: 8px;
+}
+
+.error-label {
+  color: #e63946;
+  margin-bottom: 12px;
+}
+
+.raw-response {
+  margin-top: 24px;
+}
+
+.raw-response pre {
+  background-color: #1f2933;
+  color: #9fe870;
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+
+.input-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.input-group input,
+.input-group select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
