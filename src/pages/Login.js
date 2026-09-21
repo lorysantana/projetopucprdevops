@@ -1,43 +1,37 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mensagem, setMensagem] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const usuariosCadastrados = [
-    { 
-      id: 1, 
-      email: 'lorysantana@pucpr.br', 
-      senha: '1234567' 
-    }
-  ];
-
-  const handleAcessar = (e) => {
+  const handleAcessar = async (e) => {
     e.preventDefault();
+    setMensagem('');
 
-    const usuarioValido = usuariosCadastrados.find(
-      (user) => user.email === email && user.senha === senha
-    );
-
-    if (usuarioValido) {
-      setMensagem('Acessado com sucesso!');
-    } else {
-      setMensagem('Usuário ou senha incorretos!');
+    try {
+      await login(email, senha);
+      navigate('/usuarios');
+    } catch (err) {
+      setMensagem(err.message || 'Usuário ou senha incorretos!');
     }
   };
 
   return (
     <div className="container">
-      <img 
-        src="https://cdn-icons-png.flaticon.com/512/508/508759.png" 
-        alt="Ícone de segurança" 
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/508/508759.png"
+        alt="Ícone de segurança"
         className="login-icon"
       />
-      
+
       <h1>Login</h1>
-      
+
       <form onSubmit={handleAcessar}>
         <div className="input-group">
           <input
@@ -48,7 +42,7 @@ function Login() {
             required
           />
         </div>
-        
+
         <div className="input-group">
           <input
             type="password"
@@ -58,7 +52,7 @@ function Login() {
             required
           />
         </div>
-        
+
         <button type="submit">Acessar</button>
       </form>
 
