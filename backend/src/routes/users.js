@@ -2,19 +2,10 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const db = require('../db');
 const { authenticateToken, authorize } = require('../middleware/auth');
+const { toPublicUser, isValidEmail } = require('../utils/userHelpers');
 
 const router = express.Router();
 const VALID_ROLES = ['admin', 'operator', 'client'];
-
-function toPublicUser(row) {
-  if (!row) return null;
-  const { password_hash, ...publicUser } = row;
-  return publicUser;
-}
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
 
 router.use(authenticateToken);
 
