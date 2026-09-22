@@ -41,6 +41,12 @@ jobs:
         working-directory: backend
         run: npm install
 
+      - name: Executar testes unitarios do backend
+        working-directory: backend
+        env:
+          JWT_SECRET: ci-test-secret
+        run: npm test
+
       - name: Verificar sintaxe dos arquivos do backend
         working-directory: backend
         run: |
